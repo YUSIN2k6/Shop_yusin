@@ -1,0 +1,111 @@
+CREATE DATABASE IF NOT EXISTS shop_yusin;
+USE shop_yusin;
+
+-- 1. Category table
+CREATE TABLE IF NOT EXISTS category (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    price INT,
+    qty INT
+);
+
+-- 2. Capital table
+CREATE TABLE IF NOT EXISTS capital (
+    price INT PRIMARY KEY
+);
+
+-- 3. Shirt table
+CREATE TABLE IF NOT EXISTS shirt (
+    qty INT PRIMARY KEY
+);
+
+-- 4. Totalprice table
+CREATE TABLE IF NOT EXISTS totalprice (
+    price INT PRIMARY KEY,
+    mdate DATE
+);
+
+-- 5. Purchasedetail table
+CREATE TABLE IF NOT EXISTS purchasedetail (
+    pid INT PRIMARY KEY,
+    pname VARCHAR(255),
+    pqty INT,
+    price BIGINT,
+    totalprice INT
+);
+
+-- 6. Purchasetemp table
+CREATE TABLE IF NOT EXISTS purchasetemp (
+    pid INT PRIMARY KEY,
+    pname VARCHAR(255),
+    pqty INT,
+    price BIGINT,
+    totalprice INT
+);
+
+-- 7. IDHD table
+CREATE TABLE IF NOT EXISTS IDHD (
+    id VARCHAR(8)
+);
+
+-- 8. Infobuy table
+CREATE TABLE IF NOT EXISTS infobuy (
+    stt INT PRIMARY KEY AUTO_INCREMENT,
+    idhd VARCHAR(8),
+    totalprice INT,
+    hour VARCHAR(40),
+    day DATE DEFAULT NULL
+);
+
+-- 9. Managepurchase table
+CREATE TABLE IF NOT EXISTS managepurchase (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    idhd VARCHAR(8),
+    totalprice BIGINT,
+    totalqty INT,
+    hour VARCHAR(40),
+    day DATE
+);
+
+-- 10. Detail table
+CREATE TABLE IF NOT EXISTS detail (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    idhd VARCHAR(8),
+    name VARCHAR(200),
+    qty INT,
+    price INT,
+    totalprice INT
+);
+
+-- 11. User table
+CREATE TABLE IF NOT EXISTS userr (
+    uid INT PRIMARY KEY AUTO_INCREMENT,
+    uname VARCHAR(200),
+    uemail VARCHAR(100),
+    upassword Text,
+    uphone VARCHAR(15),
+    uaddress TEXT,
+    usalt text
+);
+-- 12. Admin table
+CREATE TABLE IF NOT EXISTS admin (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(200) DEFAULT NULL,
+    password VARCHAR(45) DEFAULT NULL
+);
+-- Insert initial data into Admin if not exists
+INSERT INTO admin (id, email, password)
+SELECT 1, 'admin@gmail.com', '12345678'
+FROM dual
+WHERE NOT EXISTS (
+    SELECT 1 FROM admin WHERE id = 1
+);
+
+-- Insert initial data into Infobuy if not exists
+INSERT INTO infobuy (stt, idhd, totalprice, hour, day)
+SELECT 1, '########', 0, '00:00', NULL
+FROM dual
+WHERE NOT EXISTS (
+    SELECT 1 FROM infobuy WHERE stt = 1
+);
+

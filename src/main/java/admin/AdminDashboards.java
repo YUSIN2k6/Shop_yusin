@@ -226,9 +226,11 @@ public class AdminDashboards extends JFrame {
 				new Statistics().setVisible(false);
 				new Statistics().dispose();
 				
+			
+				
 				panel_4_3.setBackground(backsize);
 				panel_5_4.setBackground(backsize);
-				menu3.setForeground(black);
+				menu4.setForeground(black);
 				dark4.setVisible(true);
 				Light4.setVisible(false);
 				new Changeshirt().setVisible(false);
@@ -291,7 +293,7 @@ public class AdminDashboards extends JFrame {
 				
 				panel_4_3.setBackground(backsize);
 				panel_5_4.setBackground(backsize);
-				menu3.setForeground(black);
+				menu4.setForeground(black);
 				dark4.setVisible(true);
 				Light4.setVisible(false);
 				new Changeshirt().setVisible(false);
@@ -354,7 +356,7 @@ public class AdminDashboards extends JFrame {
 				
 				panel_4_3.setBackground(backsize);
 				panel_5_4.setBackground(backsize);
-				menu3.setForeground(black);
+				menu4.setForeground(black);
 				dark4.setVisible(true);
 				Light4.setVisible(false);
 				new Changeshirt().setVisible(false);
@@ -424,7 +426,7 @@ public class AdminDashboards extends JFrame {
 		dark4.setBounds(46, 11, 24, 24);
 		panel_4_3.add(dark4);
 		
-		menu4 = new JLabel("  Quản lý kho");
+		menu4 = new JLabel("  Quản lý kho áo");
 		menu4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -458,6 +460,7 @@ public class AdminDashboards extends JFrame {
 				light3.setVisible(false);
 				new Statistics().setVisible(false);
 				new Statistics().dispose();
+				
 			}
 		});
 		menu4.setForeground(Color.BLACK);
